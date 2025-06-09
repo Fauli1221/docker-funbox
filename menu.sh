@@ -17,7 +17,7 @@ echo '  8) `xaos` - real-time interactive fractal zoomer'
 echo 'Demos / short animations:'
 echo '  9) `bb` - ASCII art demo'
 echo ' 10) `sl` - Train passing by'
-echo ' 11) `youtube` - Alias to watch YouTube video using `youtube-dl`, `vlc` and `caca`'
+echo ' 11) `youtube` - Alias to watch YouTube video using `yt-dlp`, `vlc` and `caca`'
 echo 'Static ASCII art:'
 echo '  * Text`formatting:'
 echo '     12) `cowsay` - Talking cow (or actually many others, run with `-l` to get a list and via `-f <name>` to use one)'
@@ -51,9 +51,9 @@ case $choice in
   '9') exec bb;;
   '10') exec sl;;
   '11') exec youtube 'https://youtu.be/B1J6Ou4q8vE';;
-  '12') exec cowsay 'wernight/funbox';;
-  '13') exec figlet 'wernight/funbox';;
-  '14') exec toilet 'wernight/funbox';;
+  '12') exec cowsay 'fauli1221/funbox';;
+  '13') exec figlet 'fauli1221/funbox';;
+  '14') exec toilet 'fauli1221/funbox';;
   '15') convert /examples/blob-beroux.png ~/blob-beroux.pgm && exec aview ~/blob-beroux.pgm;;
   '16') exec cacaview examples/blob-beroux.png;;
   '17') fortune | exec boxes -d parchment;;

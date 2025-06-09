@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian
 
 MAINTAINER Fauli1221 <contact@fauli1221.de>
 
