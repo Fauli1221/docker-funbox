@@ -33,6 +33,7 @@ echo '     20) `lolcat` - Colorful `cat`'
 echo 'Random text generator:'
 echo ' 21) `rig` - Kind of person ID'
 echo ' 22) `fortune` - Random fortune cookie message'
+echo ' 23) `ponysay` - random mlp quote'
 echo
 
 read -p 'Menu: ' choice
@@ -49,7 +50,7 @@ case $choice in
   '8') exec xaos -autopilot;;
   '9') exec bb;;
   '10') exec sl;;
-  '11') exec youtube 'https://www.youtube.com/watch?v=_7vkRTylYoA';;
+  '11') exec youtube 'https://youtu.be/B1J6Ou4q8vE';;
   '12') exec cowsay 'wernight/funbox';;
   '13') exec figlet 'wernight/funbox';;
   '14') exec toilet 'wernight/funbox';;
@@ -61,5 +62,6 @@ case $choice in
   '20') cat /examples/0?.txt | exec lolcat -a -d 1 -F 0.09;;
   '21') exec rig;;
   '22') exec fortune riddles;;
+  '23') exec ponysay -q;;
   *) echo "Invalid menu number!!! Leaving now.";;
 esac

@@ -1,6 +1,6 @@
-FROM debian
+FROM debian:bookworm
 
-MAINTAINER Werner Beroux <werner@beroux.com>
+MAINTAINER Fauli1221 <contact@fauli1221.de>
 
 # Notes:
 # - libaa-bin is aafire
@@ -33,11 +33,11 @@ RUN apt-get update \
         watch \
         xaos \
         lolcat \
-        ffmpeg \
+        wget \
 
-    && echo "Install youtube-dl" \
-    && curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/bin/youtube-dl \
-    && chmod 755 /usr/bin/youtube-dl \
+    && echo "Install yt-dlp" \
+    && curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
+    && chmod a+rx /usr/local/bin/yt-dlp \
 
     && echo "Install asciiquarium" \
     && cpan -i Term::Animation \
@@ -48,20 +48,24 @@ RUN apt-get update \
     && rm -rf asciiquarium_1.1 asciiquarium.tar.gz \
 
     && echo "Install Falling Hearts" \
-    && curl -L https://yjl.googlecode.com/hg/Bash/falling-%3C3s.sh -o /usr/local/bin/falling-hearts \
+    && curl -L https://raw.githubusercontent.com/lbarchive/yjl/master/Bash/falling-%3C3s.sh -o /usr/local/bin/falling-hearts \
     && chmod +x /usr/local/bin/falling-hearts \
 
     && echo "Install pipes" \
-    && curl -L https://raw.githubusercontent.com/pipeseroni/pipes.sh/refs/heads/master/pipes.sh -o /usr/local/bin/pipes \
+    && curl -L https://raw.githubusercontent.com/pipeseroni/pipes.sh/master/pipes.sh -o /usr/local/bin/pipes \
     && chmod +x /usr/local/bin/pipes \
+
+    && echo "Install Ponysay" \
+    && wget https://vcheng.org/ponysay/ponysay_3.0.3+20210327-1_all.deb \
+    && apt install ./ponysay_3.0.3+20210327-1_all.deb \
 
     && echo "Clean-up" \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ponysay_3.0.3+20210327-1_all.deb \
 
-    && useradd --uid 666 -m --shell /usr/sbin/nologin john
+    && useradd --uid 1000 -m --shell /usr/sbin/nologin johncapcom
 
-USER john
+USER johncapcom
 
 # Include /usr/games in PATH
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
